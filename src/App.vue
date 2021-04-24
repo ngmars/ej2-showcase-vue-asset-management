@@ -524,6 +524,7 @@ export default Vue.extend({
             ],
             dataList: [
                   { text: 'Dashboard', id: '01', messages: '', badge: '', icon: 'sf-icon-Dashboard' },
+                  { text: 'Alerts', id: '07', messages: '', badge: '', icon: 'sf-icon-Request' },
                   { text: 'Hardware', id: '02', messages: '', badge: '', icon: 'sf-icon-Hardware' },
                   { text: 'Software', id: '03', messages: '', badge: '', icon: 'sf-icon-Software' },
                   { text: 'Issued Licenses', id: '04', messages: '', badge: '', icon: 'sf-icon-License' },

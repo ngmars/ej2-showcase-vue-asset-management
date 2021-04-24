@@ -10,6 +10,7 @@ import dashboard from '@/components/Dashboard'
 import AllSoftware from '@/components/AllSoftware'
 import AllRequests from '@/components/AllRequests'
 import AllIssuedLicenses from '@/components/AllIssuedLicenses'
+import Alerts from '@/components/Alerts'
 import About from '@/components/About'
 
 Vue.use(Router)
@@ -25,6 +26,11 @@ export default new Router({
             path: '/About',
             name: 'About',
             component: About
+        },
+        {
+            path: '/Alerts',
+            name: 'Alerts',
+            component: Alerts
         },
         {
             path: '/Software',
