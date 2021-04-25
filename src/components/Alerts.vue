@@ -57,6 +57,11 @@ export default Vue.extend({
   beforeMount () {
     this.getName()
   },
+  mounted: function () {
+  window.setInterval(() => {
+    this.getName()
+  }, 30000)
+},
   methods: {
       onGridLoad: function () {
         if (Browser.isDevice) {
@@ -65,7 +70,7 @@ export default Vue.extend({
         }
       },
       async getName () {
-      const res = await fetch('http://127.0.0.1:3001/hacked/getHacks')
+      const res = await fetch('https://wildsprint-backend.herokuapp.com/hacked/getHacks')
       const data = await res.json()
       this.alert = data.Hacked
     },
