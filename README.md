@@ -1,4 +1,5 @@
 # Asset Management System
+[UPDATE]: Attached a backend, that would now intimate the system if any of the system's asset is undergoing a DDOS attack.
 A showcase application to track and visualize the software and hardware assets of an organization. This app was built using [Syncfusion Essential JS 2 Vue UI components](https://www.syncfusion.com/products/vue).
 
 ## Prerequisites
