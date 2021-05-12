@@ -70,7 +70,7 @@ export default Vue.extend({
         }
       },
       async getName () {
-      const res = await fetch('https://wildsprint-backend.herokuapp.com/hacked/getHacks')
+      const res = await fetch('https://assetmanagement-ism.herokuapp.com/hacked/getHacks')
       const data = await res.json()
       this.alert = data.Hacked
     },
