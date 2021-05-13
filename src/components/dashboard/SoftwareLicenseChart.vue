@@ -1,51 +1,64 @@
 <template>
 <div>
-    <p id="chart-title">Statistics by Software License Type</p>
-    <ejs-accumulationchart  ref='software-pie' :theme='theme' style='display:block' align='center' id='chart003'
-        :legendSettings='legendSettings' :tooltip='tooltip' enableSmartLables='true'>
-        <e-accumulation-series-collection>
-            <e-accumulation-series :dataSource='this.$store.getters.softwareLicense' :query='queries' xName='key' yName='count' :dataLabel='dataLabel' :startAngle='startAngle' :endAngle='endAngle' :explodeOffset='explodeOffset' :explodeIndex='explodeIndex' :radius='radius' name='Software License' innerRadius='0%'  explode='true' width=2 :palettes="colors"> </e-accumulation-series>
-        </e-accumulation-series-collection>
-    </ejs-accumulationchart>
+    <p id="chart-title"><center> <b> Hardware Classification</b></center></p>
+    <ejs-chart style='display:block' align='center' id='chart002' :primaryXAxis='primaryXAxis' :primaryYAxis='primaryYAxis'
+        :chartArea='chartArea' :tooltip='tooltip'>
+        <e-series-collection>
+            <e-series :dataSource='this.$store.getters.laptopData' :query='laptopQuery' type='Column' xName='key' yName='count' name='Laptop' :marker='marker' fill='rgb(10, 19, 143)'> </e-series>
+            <e-series :dataSource='this.$store.getters.monitorData' :query='monitorQuery' type='Column' xName='key' yName='count' name='Monitor' :marker='marker' fill='rgb(22, 133, 207)'> </e-series>
+            <e-series :dataSource='this.$store.getters.tabletData' :query='tabletQuery' type='Column' xName='key' yName='count' name='Tablet' :marker='marker' fill='rgb(207, 22, 176)'> </e-series>
+            <e-series :dataSource='this.$store.getters.miscData' :query='miscQuery' type='Column' xName='key' yName='count' name='Miscellaneous' :marker='marker' fill='rgb(121, 4, 175)'> </e-series>
+        </e-series-collection>
+    </ejs-chart>
 </div>
 </template>
 <script>
 import Vue from 'vue'
-import { AccumulationChartPlugin, AccumulationTooltip, PieSeries, AccumulationDataLabel, AccumulationLegend } from '@syncfusion/ej2-vue-charts'
+import { ChartPlugin, ColumnSeries, Category, DataLabel, Tooltip, Legend } from '@syncfusion/ej2-vue-charts'
 import { Query } from '@syncfusion/ej2-data'
 
-Vue.use(AccumulationChartPlugin)
+Vue.use(ChartPlugin)
 export default Vue.extend({
   data: function () {
     return {
-        theme: 'Fabric',
-        queries: new Query().take(this.$store.getters.softwareLicense.length),
-        title: 'Statistics by Software License Type',
-        enableSmartLabels: true,
-        legendSettings: {
-            visible: true,
-            position: 'Bottom'
-        },
-        tooltip: { enable: true },
-        startAngle: '0',
-        endAngle: '360',
-        radius: '90%',
-        explodeOffset: '5%',
-        explodeIndex: 0,
-        colors: ['#FDC288', '#A483D5', '#CB85AA'],
-        dataLabel: {
-                    visible: true,
-                    position: 'Inside',
-                    name: 'text',
-                    font: {
-                        fontWeight: '600'
-                    }
-                }
-        }
+    laptopQuery: new Query().take(this.$store.getters.laptopData.length),
+    monitorQuery: new Query().take(this.$store.getters.monitorData.length),
+    tabletQuery: new Query().take(this.$store.getters.tabletData.length),
+    miscQuery: new Query().take(this.$store.getters.miscData.length),
+    // Initializing Primary X Axis
+    primaryXAxis: {
+        valueType: 'Category', interval: 0, majorGridLines: { width: 0 }
     },
-    provide: {
-    accumulationchart: [AccumulationLegend, PieSeries, AccumulationTooltip, AccumulationDataLabel]
+    chartArea: { border: { width: 0 } },
+
+    // Initializing Primary Y Axis
+        primaryYAxis:
+    {
+        minimum: 0,
+        maximum: 8,
+        interval: 10,
+        majorGridLines: { width: 0 },
+        majorTickLines: { width: 0 },
+        lineStyle: { width: 0 },
+        labelStyle: { color: 'transparent' }
+    },
+    theme: 'Fabric',
+    width: '100%',
+    marker:
+    { dataLabel:
+           { visible: true, position: 'Top', font: { fontWeight: '600' }
+           }
+    },
+    tooltip: {
+    enable: true
+    },
+    title: 'Statistics by Hardware Category',
+    enableSmartLabels: true
     }
+  },
+  provide: {
+    chart: [ColumnSeries, Legend, DataLabel, Category, Tooltip]
+  }
 })
 </script>
 <style scoped>

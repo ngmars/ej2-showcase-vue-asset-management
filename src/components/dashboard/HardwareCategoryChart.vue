@@ -1,64 +1,51 @@
 <template>
 <div>
-    <p id="chart-title">Statistics by Hardware Category</p>
-    <ejs-chart style='display:block' align='center' id='chart002' :primaryXAxis='primaryXAxis' :primaryYAxis='primaryYAxis'
-        :chartArea='chartArea' :tooltip='tooltip'>
-        <e-series-collection>
-            <e-series :dataSource='this.$store.getters.laptopData' :query='laptopQuery' type='Column' xName='key' yName='count' name='Laptop' :marker='marker' fill='#A6DC7E'> </e-series>
-            <e-series :dataSource='this.$store.getters.monitorData' :query='monitorQuery' type='Column' xName='key' yName='count' name='Monitor' :marker='marker' fill='#6EB5D0'> </e-series>
-            <e-series :dataSource='this.$store.getters.tabletData' :query='tabletQuery' type='Column' xName='key' yName='count' name='Tablet' :marker='marker' fill='#7E7EDC'> </e-series>
-            <e-series :dataSource='this.$store.getters.miscData' :query='miscQuery' type='Column' xName='key' yName='count' name='Miscellaneous' :marker='marker' fill='#D075C6'> </e-series>
-        </e-series-collection>
-    </ejs-chart>
+    <p id="chart-title"><center><b> Software License Type Representation</b></center></p>
+    <ejs-accumulationchart  ref='software-pie' :theme='theme' style='display:block' align='center' id='chart003'
+        :legendSettings='legendSettings' :tooltip='tooltip' enableSmartLables='true'>
+        <e-accumulation-series-collection>
+            <e-accumulation-series :dataSource='this.$store.getters.softwareLicense' :query='queries' xName='key' yName='count' :dataLabel='dataLabel' :startAngle='startAngle' :endAngle='endAngle' :explodeOffset='explodeOffset' :explodeIndex='explodeIndex' :radius='radius' name='Software License' innerRadius='0%'  explode='true' width=2 :palettes="colors"> </e-accumulation-series>
+        </e-accumulation-series-collection>
+    </ejs-accumulationchart>
 </div>
+
 </template>
 <script>
 import Vue from 'vue'
-import { ChartPlugin, ColumnSeries, Category, DataLabel, Tooltip, Legend } from '@syncfusion/ej2-vue-charts'
+import { AccumulationChartPlugin, AccumulationTooltip, PieSeries, AccumulationDataLabel, AccumulationLegend } from '@syncfusion/ej2-vue-charts'
 import { Query } from '@syncfusion/ej2-data'
-
-Vue.use(ChartPlugin)
+Vue.use(AccumulationChartPlugin)
 export default Vue.extend({
   data: function () {
     return {
-    laptopQuery: new Query().take(this.$store.getters.laptopData.length),
-    monitorQuery: new Query().take(this.$store.getters.monitorData.length),
-    tabletQuery: new Query().take(this.$store.getters.tabletData.length),
-    miscQuery: new Query().take(this.$store.getters.miscData.length),
-    // Initializing Primary X Axis
-    primaryXAxis: {
-        valueType: 'Category', interval: 0, majorGridLines: { width: 0 }
+        theme: 'Fabric',
+        queries: new Query().take(this.$store.getters.softwareLicense.length),
+        title: 'Statistics by Software License Type',
+        enableSmartLabels: true,
+        legendSettings: {
+            visible: true,
+            position: 'Bottom'
+        },
+        tooltip: { enable: true },
+        startAngle: '0',
+        endAngle: '360',
+        radius: '90%',
+        explodeOffset: '5%',
+        explodeIndex: 0,
+        colors: ['#ff9326', '#6c20df', '#df4999'],
+        dataLabel: {
+                    visible: true,
+                    position: 'Inside',
+                    name: 'text',
+                    font: {
+                        fontWeight: '600'
+                    }
+                }
+        }
     },
-    chartArea: { border: { width: 0 } },
-
-    // Initializing Primary Y Axis
-        primaryYAxis:
-    {
-        minimum: 0,
-        maximum: 8,
-        interval: 10,
-        majorGridLines: { width: 0 },
-        majorTickLines: { width: 0 },
-        lineStyle: { width: 0 },
-        labelStyle: { color: 'transparent' }
-    },
-    theme: 'Fabric',
-    width: '100%',
-    marker:
-    { dataLabel:
-           { visible: true, position: 'Top', font: { fontWeight: '600' }
-           }
-    },
-    tooltip: {
-    enable: true
-    },
-    title: 'Statistics by Hardware Category',
-    enableSmartLabels: true
+    provide: {
+    accumulationchart: [AccumulationLegend, PieSeries, AccumulationTooltip, AccumulationDataLabel]
     }
-  },
-  provide: {
-    chart: [ColumnSeries, Legend, DataLabel, Category, Tooltip]
-  }
 })
 </script>
 <style scoped>

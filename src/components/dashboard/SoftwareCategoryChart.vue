@@ -1,6 +1,6 @@
 <template>
 <div>
-    <p id="chart-title">Statistics by Software Category</p>
+    <p id="chart-title"><center><b>Software Category Classification</b></center></p>
     <ejs-treemap id='chart004' :leafItemSettings='leafItemSettings'
      format='n' :useGroupingSeparator='useGroupingSeparator'
     :dataSource='dataSource' :legendSettings='legendSettings' :palette='palette' :tooltipSettings='tooltipSettings'
@@ -25,7 +25,7 @@ export default Vue.extend({
             shapeHeight: 7,
             shapeWidth: 7
         },
-        palette: ['#AEEB8E', '#D075C6', '#7E7EDC', '#7EC9DC', '#D6DC7E'],
+        palette: ['rgb(13, 202, 85)', '#D075C6', '#7E7EDC', '#7EC9DC', 'rgb(202, 158, 13)'],
         tooltipSettings: {
             visible: true,
             // eslint-disable-next-line
@@ -38,7 +38,7 @@ export default Vue.extend({
         weightValuePath: 'LicenseCount',
         levels: [
             {
-                groupPath: 'Category', border: 'none' // { color: 'white', width: 0.5 }
+                groupPath: 'Category', border: 'none' // { color: 'white', width: 1 }
             }
         ]
     }

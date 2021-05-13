@@ -21,3 +21,5 @@ A showcase application to track and visualize the software and hardware assets o
 [Asset Management System](https://ej2.syncfusion.com/showcase/vue/assetmanagement)
 
 Also please check out other showcase samples built using Essential JS 2 components [here](https://ej2.syncfusion.com/home/vue.html).
+
+

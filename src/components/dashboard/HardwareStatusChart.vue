@@ -1,6 +1,6 @@
 <template>
     <div>
-    <p id="chart-title">Statistics by Hardware Status</p>
+    <p id="chart-title"> <center><b>Hardware Status Representation </b></center></p>
     <ejs-accumulationchart  ref='hardware-pie' :theme='theme' style='display:block' align='center' id='chart001'
         :legendSettings='legendSettings' :tooltip='tooltip' enableSmartLables='true'>
         <e-accumulation-series-collection>
@@ -32,7 +32,7 @@ export default Vue.extend({
         radius: '90%',
         explodeOffset: '5%',
         explodeIndex: 0,
-        colors: ['#7F9FD2', '#81B8B3', '#7FD29F', '#AEEB8E'],
+        colors: ['rgb(0, 128, 53)', 'rgb(123, 221, 43)', 'rgb(146, 245, 126)', 'rgb(43, 221, 111)'],
         dataLabel: {
                     visible: true,
                     position: 'Inside',

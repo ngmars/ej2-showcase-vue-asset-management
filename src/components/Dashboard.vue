@@ -1,7 +1,10 @@
+
 <template>
 <div class="container-fluid">
 <div class="row top-row">
     <div class="col-lg-8 col-md-8">
+        <h3> <b>ASSET MANAGEMENT SYSTEM</b> </h3>
+        <br>
         <h3>Dashboard</h3>
     </div>
 <!-- </div>
@@ -29,7 +32,7 @@
 </div>
 <div class="row">
 <!-- <div class="col-lg-12 "> -->
-    <div class="col-lg-8">
+    <div class="col-lg-16">
         <div class="row">
             <div class="col-lg-6 chart-area">
                 <div id='chart01'>
@@ -67,15 +70,11 @@
             </div>
         </div>
     </div>
-    <div class="col-lg-4 list-surface">
-        <div class="list-area">
-        <ejs-listview id='listview_template' ref='list_template' :fields='fields' :dataSource='data' :showHeader='header' :headerTitle='listTitle' :actionComplete='onComplete' :template='ltemplate'></ejs-listview>
-        </div>
-    </div>
 <!-- </div> -->
 </div>
 </div>
 </template>
+
 <script>
 import Vue from 'vue'
 import { ListViewPlugin } from '@syncfusion/ej2-vue-lists'
@@ -135,26 +134,26 @@ export default Vue.extend({
     cursor: pointer;
 }
 #card-request {
-    background-color: #B991DA;
+    background-color: rgb(80, 193, 238);
 }
 #card-request:hover {
-    background-color: #946DB4;
+    background-color:rgb(125, 202, 173);
 }
 #card-license {
-    background-color: #60D6A2;
+    background-color: rgb(15, 18, 230);
 }
 #card-license:hover {
-    background-color: #4DAE83;
+    background-color: rgb(116, 118, 241);
 }
 .e-card-header-title {
     color: #FFFFFF !important;
     font-size: 26px !important;
-    font-family: Roboto;
+    font-family: 'Open Sans', sans-serif !important;
     font-weight: '1000';
 }
 .e-card-sub-title {
     color: #FFFFFF !important;
-    font-family: Roboto;
+    font-family: 'Open Sans', sans-serif !important;
     font-size: 14px !important;
 }
 .chart-area {
@@ -181,7 +180,7 @@ export default Vue.extend({
     box-shadow: 0px 2px 8px #7b77885e;
     height: 612px;
     overflow: auto;
-    background: #fff;
+    background: rgb(80, 193, 238);
     margin-top: 10px;
 }
 .row.col-lg-8.empty-row {
